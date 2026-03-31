@@ -17,8 +17,15 @@
 
   <script>
     function mostrarImagen() {
-      document.getElementById("imagen").src = "tamales para una pagina web.png";
-    }
+    let img = document.getElementById("imagen");
+
+    img.style.display = "block";
+    img.src = "tamal.jpg";
+
+    setTimeout(function() {
+      img.style.display = "none";
+    }, 5000);
+  }
   </script>
 
 </body>
