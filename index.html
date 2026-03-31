@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -6,29 +7,28 @@
 
 <body style="text-align:center;">
 
-  <h1>botón inútil</h1>
+  <h1>botones inutiles lol</h1>
 
   <!-- BOTÓN 1 -->
   <button onclick="mostrarImagen()">
-    botón de 2 tamales
+    tamal
   </button>
 
   <!-- BOTÓN 2 -->
   <button onclick="imagenRebotando()">
-    boton de hámster en columpio
+    hámster en columpio
   </button>
 
   <br><br>
 
   <!-- Imagen normal -->
-  <img id="tamales para una pagina web.png" width="300" style="display:none;">
+  <img id="imagen" width="300" style="display:none;">
 
   <!-- Imagen que rebota -->
   <img id="rebotando" src="hamsterparamipaginatodarara.jpg" width="150"
        style="position:absolute; display:none;">
 
   <script>
-    // BOTÓN 1 (tu tamal normal)
     function mostrarImagen() {
       let img = document.getElementById("imagen");
 
@@ -40,7 +40,6 @@
       }, 5000);
     }
 
-    // BOTÓN 2 (imagen que rebota)
     function imagenRebotando() {
       let img = document.getElementById("rebotando");
 
@@ -55,12 +54,10 @@
         x += dx;
         y += dy;
 
-        // Rebote horizontal
         if (x <= 0 || x >= window.innerWidth - 150) {
           dx = -dx;
         }
 
-        // Rebote vertical
         if (y <= 0 || y >= window.innerHeight - 150) {
           dy = -dy;
         }
