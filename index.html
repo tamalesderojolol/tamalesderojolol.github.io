@@ -1,17 +1,25 @@
 
+
 <!DOCTYPE html>
 <html>
 <head>
-  <title>la página mas inútil del mundo</title>
+  <title>la página más inútil del mundo</title>
 </head>
 
-<body style="background-image: url('meme-del-gato-riendo.jpg'); background-size: cover; background-repeat: no-repeat;">
+<body style="
+  text-align:center;
+  color:white;
+  background-image: url('meme-del-gato-riendo.jpg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+">
 
-  <h1>botones inutiles lol</h1>
+  <h1>botones inútiles</h1>
 
   <!-- BOTÓN 1 -->
   <button onclick="mostrarImagen()">
-    tamal
+    tamales no se de que sabor
   </button>
 
   <!-- BOTÓN 2 -->
@@ -19,16 +27,25 @@
     hámster en columpio
   </button>
 
+  <!-- BOTÓN 3 -->
+  <button onclick="jumpscareGato()">
+  NO PICARLE
+  </button>
+
   <br><br>
 
   <!-- Imagen normal -->
-  <img id="imagen" width="300" style="display:none;">
+  <img id="tamales para una pagina web" width="300" style="display:none;">
 
-  <!-- Imagen que rebota -->
+  <!-- Imagen rebotando -->
   <img id="rebotando" src="hamsterparamipaginatodarara.jpg" width="150"
        style="position:absolute; display:none;">
 
+  <!-- Jumpscare -->
+  <img id="jumpscare gato.jpg" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%;">
+
   <script>
+    // BOTÓN 1 (tamal)
     function mostrarImagen() {
       let img = document.getElementById("imagen");
 
@@ -40,6 +57,7 @@
       }, 5000);
     }
 
+    // BOTÓN 2 (rebote)
     function imagenRebotando() {
       let img = document.getElementById("rebotando");
 
@@ -65,6 +83,18 @@
         img.style.left = x + "px";
         img.style.top = y + "px";
       }, 20);
+    }
+
+    // BOTÓN 3 (jumpscare gato)
+    function jumpscareGato() {
+      let img = document.getElementById("gato");
+
+      img.style.display = "block";
+      img.src = "jumpscare gato.jpg"; 
+
+      setTimeout(function() {
+        img.style.display = "none";
+      }, 1000);
     }
   </script>
 
