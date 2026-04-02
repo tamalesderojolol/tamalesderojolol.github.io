@@ -1,9 +1,11 @@
 
 
+
+
 <!DOCTYPE html>
 <html>
 <head>
-  <title>la página más inútil del mundo</title>
+  <title>La págna más inútil del mundo</title>
 </head>
 
 <body style="
@@ -19,17 +21,17 @@
 
   <!-- BOTÓN 1 -->
   <button onclick="mostrarImagen()">
-    tamales no se de que sabor
+    Tamales de rojo (creo)
   </button>
 
   <!-- BOTÓN 2 -->
-  <button onclick="imagenRebotando()">
-    hámster en columpio
+  <button onclick="seguirMouse()">
+    Hámster en columpio
   </button>
 
   <!-- BOTÓN 3 -->
   <button onclick="jumpscareGato()">
-  NO PICARLE
+    NO PICARLE
   </button>
 
   <br><br>
@@ -37,9 +39,9 @@
   <!-- Imagen normal -->
   <img id="tamales para una pagina web.png" width="300" style="display:none;">
 
-  <!-- Imagen rebotando -->
-  <img id="rebotando" src="hamsterparamipaginatodarara.jpg" width="150"
-       style="position:absolute; display:none;">
+  <!-- Hámster perseguidor -->
+  <img id="hamster" src="hamsterparamipaginatodarara.jpg" width="120"
+       style="position:fixed; display:none; pointer-events:none;">
 
   <!-- Jumpscare -->
   <img id="jumpscare gato.jpg" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%;">
@@ -47,7 +49,7 @@
   <script>
     // BOTÓN 1 (tamal)
     function mostrarImagen() {
-      let img = document.getElementById("tamales para una pagina web.png");
+      let img = document.getElementById("tamales para una pagina web");
 
       img.style.display = "block";
       img.src = "tamales para una pagina web.png";
@@ -57,40 +59,38 @@
       }, 5000);
     }
 
-    // BOTÓN 2 (rebote)
-    function imagenRebotando() {
-      let img = document.getElementById("hamsterparamipaginatodarara.jpg");
+    // BOTÓN 2 (hámster persigue mouse)
+    let siguiendo = false;
 
-      img.style.display = "block";
+    function seguirMouse() {
+      let hamster = document.getElementById("hamsterparamipaginatodarara.jpg");
 
-      let x = 100;
-      let y = 100;
-      let dx = 3;
-      let dy = 3;
-
-      setInterval(function() {
-        x += dx;
-        y += dy;
-
-        if (x <= 0 || x >= window.innerWidth - 150) {
-          dx = -dx;
-        }
-
-        if (y <= 0 || y >= window.innerHeight - 150) {
-          dy = -dy;
-        }
-
-        img.style.left = x + "px";
-        img.style.top = y + "px";
-      }, 20);
+      hamster.style.display = "block";
+      siguiendo = true;
     }
+
+    document.addEventListener("mousemove", function(e) {
+      if (!siguiendo) return;
+
+      let hamster = document.getElementById("hamsterparamipaginatodarara.jpg");
+
+      // movimiento suave hacia el mouse
+      let x = hamster.offsetLeft;
+      let y = hamster.offsetTop;
+
+      let dx = (e.clientX - x) * 0.05;
+      let dy = (e.clientY - y) * 0.05;
+
+      hamster.style.left = (x + dx) + "px";
+      hamster.style.top = (y + dy) + "px";
+    });
 
     // BOTÓN 3 (jumpscare gato)
     function jumpscareGato() {
       let img = document.getElementById("jumpscare gato.jpg");
 
       img.style.display = "block";
-      img.src = "jumpscare gato.jpg"; 
+      img.src = "gato.png";
 
       setTimeout(function() {
         img.style.display = "none";
