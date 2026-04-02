@@ -1,69 +1,34 @@
 
-
-
-
 <!DOCTYPE html>
 <html>
 <head>
-  <title>La págna más inútil del mundo</title>
+  <title>Hámster</title>
 </head>
 
 <body style="
   text-align:center;
+  background:black;
   color:white;
-  background-image: url('meme-del-gato-riendo.jpg');
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
 ">
 
-  <h1>botones inútiles</h1>
+  <h1>botón inútil</h1>
 
-  <!-- BOTÓN 1 -->
-  <button onclick="mostrarImagen()">
-    Tamales de rojo (creo)
-  </button>
-
-  <!-- BOTÓN 2 -->
+  <!-- BOTÓN -->
   <button onclick="seguirMouse()">
-    Hámster en columpio
-  </button>
-
-  <!-- BOTÓN 3 -->
-  <button onclick="jumpscareGato()">
-    NO PICARLE
+    hámster
   </button>
 
   <br><br>
 
-  <!-- Imagen normal -->
-  <img id="tamales para una pagina web.png" width="300" style="display:none;">
-
-  <!-- Hámster perseguidor -->
-  <img id="hamster" src="hamsterparamipaginatodarara.jpg" width="120"
+  <!-- Hámster -->
+  <img id="hamsterparamipaginatodarara.jpg" src="hamsterparamipaginatodarara.jpg" width="120"
        style="position:fixed; display:none; pointer-events:none;">
 
-  <!-- Jumpscare -->
-  <img id="jumpscare gato.jpg" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%;">
-
   <script>
-    // BOTÓN 1 (tamal)
-    function mostrarImagen() {
-      let img = document.getElementById("tamales para una pagina web.png");
-
-      img.style.display = "block";
-      img.src = "tamales para una pagina web.png";
-
-      setTimeout(function() {
-        img.style.display = "none";
-      }, 5000);
-    }
-
-    // BOTÓN 2 (hámster persigue mouse)
     let siguiendo = false;
 
     function seguirMouse() {
-      let hamster = document.getElementById("hamsterparamipaginatodarara.jpg");
+      let hamster = document.getElementById("hamster");
 
       hamster.style.display = "block";
       siguiendo = true;
@@ -74,7 +39,6 @@
 
       let hamster = document.getElementById("hamsterparamipaginatodarara.jpg");
 
-      // movimiento suave hacia el mouse
       let x = hamster.offsetLeft;
       let y = hamster.offsetTop;
 
@@ -84,18 +48,6 @@
       hamster.style.left = (x + dx) + "px";
       hamster.style.top = (y + dy) + "px";
     });
-
-    // BOTÓN 3 (jumpscare gato)
-    function jumpscareGato() {
-      let img = document.getElementById("jumpscare gato.jpg");
-
-      img.style.display = "block";
-      img.src = "jumpscare gato.png";
-
-      setTimeout(function() {
-        img.style.display = "none";
-      }, 1000);
-    }
   </script>
 
 </body>
