@@ -1,53 +1,72 @@
 
 
+
 <!DOCTYPE html>
 <html>
 <head>
   <title>Hámster</title>
 </head>
 
-<body style="
-  text-align:center;
-  background:black;
-  color:white;
-">
+<body style="text-align:center; background:black; color:black;">
 
-  <h1>botón inútil</h1>
+  <h1>botón</h1>
 
-  <!-- BOTÓN -->
-  <button onclick="seguirMouse()">
-    hámster en columpio :D
+  <button onclick="activar()">
+  hámster en columpio
   </button>
 
-  <br><br>
-
-  <!-- Hámster -->
-  <img id="hamster" src="hamsterparamipaginatodarara.jpg" width="120"
-       style="position:fixed; display:none; pointer-events:none;">
-
   <script>
-    let siguiendo = false;
+    let hamsters = [];
+    let maxHamsters = 100;
+    let activo = false;
 
-    function seguirMouse() {
-      let hamster = document.getElementById("hamster");
+    function crearHamster(x, y) {
+      let img = document.createElement("img");
+      img.src = "hamsterparamipaginatodarara.jpg";
+      img.width = 80;
+      img.style.position = "fixed";
+      img.style.left = x + "px";
+      img.style.top = y + "px";
+      img.style.pointerEvents = "none";
 
-      hamster.style.display = "block";
-      siguiendo = true;
+      document.body.appendChild(img);
+
+      hamsters.push({
+        element: img,
+        x: x,
+        y: y
+      });
+    }
+
+    function activar() {
+      if (activo) return;
+      activo = true;
+
+      crearHamster(100, 100);
     }
 
     document.addEventListener("mousemove", function(e) {
-      if (!siguiendo) return;
+      if (!activo) return;
 
-      let hamster = document.getElementById("hamster");
+      hamsters.forEach(h => {
+        let dx = (e.clientX - h.x) * 0.05;
+        let dy = (e.clientY - h.y) * 0.05;
 
-      let x = hamster.offsetLeft;
-      let y = hamster.offsetTop;
+        h.x += dx;
+        h.y += dy;
 
-      let dx = (e.clientX - x) * 0.05;
-      let dy = (e.clientY - y) * 0.05;
+        h.element.style.left = h.x + "px";
+        h.element.style.top = h.y + "px";
 
-      hamster.style.left = (x + dx) + "px";
-      hamster.style.top = (y + dy) + "px";
+        // detectar "captura"
+        if (
+          Math.abs(h.x - e.clientX) < 20 &&
+          Math.abs(h.y - e.clientY) < 20 &&
+          hamsters.length < maxHamsters
+        ) {
+          crearHamster(h.x, h.y);
+        }
+      });
     });
   </script>
 
